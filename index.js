@@ -8,6 +8,9 @@ const app = express();
 // Initialise the logger
 app.use(logger) 
 
+// Allow the API to parse json
+app.use(express.json());
+
 // Set a port for the server to run on - 5000 for dev
 app.use('/api/v1', require('./routes/api/v1'));
 
