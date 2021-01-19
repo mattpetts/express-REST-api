@@ -8,6 +8,8 @@ const path = require('path');
 let houses = require(path.join(__dirname, 'data', 'houses.json'),);
 
 
+// Handle homepage
+
 
 // Gets all data
 router.get('/', (req, res) => {
