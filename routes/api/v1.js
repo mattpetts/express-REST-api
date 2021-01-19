@@ -2,29 +2,17 @@ const express = require('express');
 const router = express.Router();
 const uuid = require('uuid');
 const fs = require('fs');
-const path = require('path');
-
-// get the data from a json file
-let houses = require(path.join(__dirname, 'data', 'houses.json'),);
-
-
-// Handle homepage
+const { getHouses, getSingleHouse, createHouse, updateHouse, deleteHouse } = require('../../controllers/HousesController')
 
 
 // Gets all data
 router.get('/', (req, res) => {
-    res.json(houses)
+    getHouses(req, res);
 });
 
 // Get by id
 router.get('/:id', (req, res) => {
-    const house = houses.find((h) => h.id === req.params.id);
-
-    if (house) {
-        res.status(200).json(house)
-    } else {
-        res.status(404).json({message: `There is no house in Westeros with the id: ${req.params.id}`})
-    }
+    getSingleHouse(req, res);
 });
 
 // write to the json file
