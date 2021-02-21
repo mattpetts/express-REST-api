@@ -15,15 +15,21 @@ async function getSingleHouse (req, res) {
     }
 }
 
-function createHouse () {
+async function createHouse (req, res) {
+    const house = await House.createHouse(req, res);
+
+    if (house) {
+        res.status(200).json(house)
+    } else {
+        res.status(500).json({message: `Something went wrong`})
+    }
+}
+
+async function updateHouse () {
 
 }
 
-function updateHouse () {
-
-}
-
-function deleteHouse () {
+async function deleteHouse () {
 
 }
 
